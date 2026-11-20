@@ -1,0 +1,31 @@
+name: Deploy to Hostinger
+# Every push to main uploads the built app to public_html/atlas/v2 over FTP.
+# Needs three repository secrets: FTP_SERVER, FTP_USERNAME, FTP_PASSWORD.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check secrets
+        id: chk
+        env:
+          S: ${{ secrets.FTP_SERVER }}
+        run: if [ -n "$S" ]; then echo "ok=1" >> "$GITHUB_OUTPUT"; else echo "FTP secrets not set yet, skipping"; fi
+      - uses: actions/checkout@v4
+        if: steps.chk.outputs.ok == '1'
+      - uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        if: steps.chk.outputs.ok == '1'
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: ${{ vars.FTP_DIR || 'public_html/atlas/v2/' }}
+          exclude: |
+            **/.git*
+            **/.git*/**
+            .github/**
+            snippets/**
+            README.md

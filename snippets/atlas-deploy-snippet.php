@@ -22,12 +22,15 @@ add_action('rest_api_init', function () {
 			if (empty($t['tree'])) return new WP_Error('notree', 'could not read tree', array('status' => 502));
 			$out = array();
 			$last = null;
+			$lastp = array();
 			foreach ($t['tree'] as $e) {
 				$p = $e['path'];
-				if ($e['type'] != 'blob' || strpos($p, '..') !== false || !preg_match('#^(index\.html|logo\.svg|assets/[A-Za-z0-9_.\-]+|models/[A-Za-z0-9_./\-]+)$#', $p)) continue;
+				if ($e['type'] != 'blob' || strpos($p, '..') !== false || !preg_match('#^(index\.html|logo\.svg|assets/[A-Za-z0-9_.\-]+|models/[A-Za-z0-9_./\-]+|preview/[A-Za-z0-9_./\-]+)$#', $p)) continue;
 				if ($p == 'index.html') { $last = $e; continue; }
+				if (substr($p, -11) == '/index.html') { $lastp[] = $e; continue; }
 				$out[$p] = atlas_deploy_file($repo, $sha, $dir, $e);
 			}
+			foreach ($lastp as $e) $out[$e['path']] = atlas_deploy_file($repo, $sha, $dir, $e);
 			if ($last) $out['index.html'] = atlas_deploy_file($repo, $sha, $dir, $last);
 			delete_transient('atlas_deploy_lock');
 			return array('sha' => $sha, 'dir' => $dir, 'files' => $out);

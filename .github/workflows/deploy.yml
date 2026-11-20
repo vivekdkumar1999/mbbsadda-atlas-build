@@ -1,6 +1,6 @@
-name: Deploy to Hostinger
-# Every push to main uploads the built app to public_html/atlas/v2 over FTP.
-# Needs three repository secrets: FTP_SERVER, FTP_USERNAME, FTP_PASSWORD.
+name: Deploy to atlas.mbbsadda.in
+# After every push to main, ask the WordPress site to pull this build into public_html/atlas/v2.
+# The endpoint (a WPCode snippet on mbbsadda.in) only ever copies files from this public repo.
 on:
   push:
     branches: [main]
@@ -9,23 +9,15 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Check secrets
-        id: chk
-        env:
-          S: ${{ secrets.FTP_SERVER }}
-        run: if [ -n "$S" ]; then echo "ok=1" >> "$GITHUB_OUTPUT"; else echo "FTP secrets not set yet, skipping"; fi
-      - uses: actions/checkout@v4
-        if: steps.chk.outputs.ok == '1'
-      - uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        if: steps.chk.outputs.ok == '1'
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: ${{ vars.FTP_DIR || 'public_html/atlas/v2/' }}
-          exclude: |
-            **/.git*
-            **/.git*/**
-            .github/**
-            snippets/**
-            README.md
+      - name: Trigger sync on the server
+        run: |
+          sleep 20
+          code=$(curl -sS -o out.json -w "%{http_code}" -X POST --max-time 600 https://mbbsadda.in/wp-json/atlas/v1/deploy)
+          echo "HTTP $code"; cat out.json; echo
+          if [ "$code" = "404" ]; then echo "Deploy snippet not installed yet"; exit 0; fi
+          test "$code" = "200"
+          ! grep -q '"fail"' out.json
+      - name: Check the live site
+        run: |
+          curl -sS https://atlas.mbbsadda.in/ | grep -o 'assets/index-[A-Za-z0-9_-]*\.js'
+          git ls-remote https://github.com/${{ github.repository }} main

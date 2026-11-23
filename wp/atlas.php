@@ -67,6 +67,13 @@ add_action( 'rest_api_init', function () {
 	}, 20, 3 );
 }, 15 );
 
+/* "last used the Atlas" — written at most once an hour per student, not on every call */
+function mbx_atlas_touch( $uid ) {
+	if ( (int) get_user_meta( $uid, 'mbx_atlas_seen', true ) < time() - HOUR_IN_SECONDS ) {
+		update_user_meta( $uid, 'mbx_atlas_seen', time() );
+	}
+}
+
 function mbx_atlas_uid() {
 	return function_exists( 'mbx_pro_bearer_uid' ) ? mbx_pro_bearer_uid() : 0;
 }
@@ -117,7 +124,7 @@ add_action( 'rest_api_init', function () {
 				}
 			}
 			$st = get_user_meta( $uid, 'mbx_atlas_state', true );
-			update_user_meta( $uid, 'mbx_atlas_seen', time() );
+			mbx_atlas_touch( $uid );
 			$res = new WP_REST_Response( array(
 				'signedIn' => true,
 				'name'     => $u ? ( $u->display_name ?: $u->user_login ) : '',
@@ -139,13 +146,19 @@ add_action( 'rest_api_init', function () {
 			if ( ! $uid ) {
 				return new WP_Error( 'auth', 'Please sign in again.', array( 'status' => 401 ) );
 			}
+			$rk = 'mbx_atlas_w_' . $uid;
+			$n  = (int) get_transient( $rk );
+			if ( $n >= 30 ) {
+				return new WP_Error( 'slow', 'Too many saves; try again in a minute.', array( 'status' => 429 ) );
+			}
+			set_transient( $rk, $n + 1, MINUTE_IN_SECONDS );
 			$body = $r->get_json_params();
 			if ( ! is_array( $body ) || strlen( (string) $r->get_body() ) > 65536 ) {
 				return new WP_Error( 'bad', 'Bad data', array( 'status' => 400 ) );
 			}
 			$st = mbx_atlas_clean_state( $body );
 			update_user_meta( $uid, 'mbx_atlas_state', $st );
-			update_user_meta( $uid, 'mbx_atlas_seen', time() );
+			mbx_atlas_touch( $uid );
 			return array( 'ok' => true, 't' => $st['t'] );
 		},
 	) );

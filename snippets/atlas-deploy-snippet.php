@@ -25,7 +25,7 @@ add_action('rest_api_init', function () {
 			$lastp = array();
 			foreach ($t['tree'] as $e) {
 				$p = $e['path'];
-				if ($e['type'] != 'blob' || strpos($p, '..') !== false || !preg_match('#^(index\.html|logo\.svg|assets/[A-Za-z0-9_.\-]+|models/[A-Za-z0-9_./\-]+|preview/[A-Za-z0-9_./\-]+)$#', $p)) continue;
+				if ($e['type'] != 'blob' || strpos($p, '..') !== false || !preg_match('#^(index\.html|logo\.svg|offline\.json|sw\.js|fig/[A-Za-z0-9_./\-]+|stations/[A-Za-z0-9_./\-]+|assets/[A-Za-z0-9_.\-]+|models/[A-Za-z0-9_./\-]+|preview/[A-Za-z0-9_./\-]+)$#', $p)) continue;
 				if ($p == 'index.html') { $last = $e; continue; }
 				if (substr($p, -11) == '/index.html') { $lastp[] = $e; continue; }
 				$out[$p] = atlas_deploy_file($repo, $sha, $dir, $e);

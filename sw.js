@@ -32,7 +32,7 @@ async function networkFirstPage(req) {
   try {
     const ctrl = new AbortController();
     const t = setTimeout(() => ctrl.abort(), 6000);
-    const res = await fetch(req, { signal: ctrl.signal });
+    const res = await fetch(req.url, { signal: ctrl.signal, cache: 'no-store', credentials: 'same-origin' }); // never an old page from the HTTP cache
     clearTimeout(t);
     if (res.ok) c.put('/', res.clone()).catch(() => {});
     return res;

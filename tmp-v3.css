@@ -162,6 +162,8 @@ body.mbx .mh3 .mh3-atlas .mh3-eyebrow { color: var(--pen) !important; }
 body.mbx .mh3-atlas .mbx-btn-ghost-light { color: var(--ink) !important; box-shadow: inset 0 0 0 1.5px var(--line-2) !important; }
 body.mbx .mh3-app:not(.mh3-atlas) { background: var(--ink) !important; }
 body.mbx .mh3 .mh3-app:not(.mh3-atlas) .mh3-eyebrow { color: #FFD43B !important; }
+body.mbx .mh3-app:not(.mh3-atlas) h2 { color: #fff !important; }
+body.mbx .mh3-app:not(.mh3-atlas) p { color: #C9D1E0 !important; }
 
 /* the last call: a highlighter-yellow band */
 body.mbx .mh3-final { background: #FFD43B !important; color: var(--ink) !important; }

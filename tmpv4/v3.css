@@ -460,7 +460,7 @@ body.mbx .mbx-bgsec .mbx-btn-light { background: #FFD43B !important; color: var(
 body.mbx:has(.kqb-rail) .site-content { padding-top: 0 !important; }
 body.mbx:has(.kqb-rail) .entry-header,
 body.mbx:has(.kqb-rail) .kqb-rail,
-body.mbx:has(.kqb-rail) .kqb > .kqb-hero {
+body.mbx:has(.kqb-rail) .kqb > .kqb-hero:not(.kqb-single-head) {
 	box-shadow: 0 0 0 100vmax var(--night); clip-path: inset(0 -100vmax);
 	background: var(--night);
 }
@@ -471,28 +471,28 @@ body.mbx:has(.kqb-rail) .kqb-rail-in { background: none !important; }
 body.mbx:has(.kqb-rail) .kqb-rail :is(.kqb-chip, .kqb-more) { background: rgba(255,255,255,.06) !important; color: var(--on-night) !important; border: 1px solid var(--night-line) !important; box-shadow: none !important; }
 body.mbx:has(.kqb-rail) .kqb-rail .kqb-chip.is-on { background: #fff !important; color: var(--ink) !important; border-color: #fff !important; }
 body.mbx:has(.kqb-rail) .kqb-rail-in::after, body.mbx:has(.kqb-rail) .kqb-rail::after, body.mbx:has(.kqb-rail) .kqb-rail::before { display: none !important; }
-body.mbx:has(.kqb-rail) .kqb > .kqb-hero {
+body.mbx:has(.kqb-rail) .kqb > .kqb-hero:not(.kqb-single-head) {
 	clip-path: inset(0 -100vmax -1px); padding-bottom: 36px !important; margin: 0 0 28px !important;
 	border: 0 !important; border-radius: 0 !important; color: var(--on-night) !important;
 }
 /* the card that holds the loop */
-body.mbx .kqb > .kqb-hero .kqb-hero-card { position: relative; isolation: isolate; overflow: hidden; border-radius: 18px; border: 1px solid var(--night-line); padding: 26px 28px 24px; min-height: 260px; background: #04070D; }
-body.mbx .kqb > .kqb-hero .kqb-hero-card > .mbx-bgv { border-radius: inherit; }
-body.mbx .kqb > .kqb-hero .kqb-hero-title { display: none !important; }
-body.mbx .kqb > .kqb-hero .kqb-crumb { color: #FFD43B !important; text-transform: none !important; letter-spacing: 0 !important; font-weight: 700 !important; font-size: 14px !important; }
-body.mbx .kqb > .kqb-hero .kqb-hero-desc { color: var(--on-night) !important; font-size: 1.12rem !important; max-width: 46ch; }
-body.mbx .kqb > .kqb-hero .kqb-hero-book { color: var(--link-night) !important; }
-body.mbx .kqb > .kqb-hero .kqb-hero-meta { color: var(--on-night-2) !important; }
-body.mbx .kqb > .kqb-hero .kqb-hero-meta strong { color: #fff !important; font-family: var(--display); }
-body.mbx .kqb > .kqb-hero .kqb-hero-meta .kqb-hy { color: #FFD43B !important; }
-body.mbx .kqb > .kqb-hero .kqb-switch { background: rgba(255,255,255,.07) !important; border: 1px solid var(--night-line) !important; }
-body.mbx .kqb > .kqb-hero .kqb-switch a { color: var(--on-night-2) !important; }
-body.mbx .kqb > .kqb-hero .kqb-switch a.is-on { background: #fff !important; color: var(--ink) !important; box-shadow: none !important; }
-body.mbx .kqb > .kqb-hero .mbx-atlas-cta { background: rgba(255,255,255,.06) !important; border: 1px solid var(--night-line) !important; box-shadow: none !important; max-width: 520px; }
-body.mbx .kqb > .kqb-hero .mbx-atlas-cta b { color: #FFD43B !important; }
-body.mbx .kqb > .kqb-hero .mbx-atlas-cta :is(span, small) { color: var(--on-night-2) !important; }
+body.mbx .kqb > .kqb-hero:not(.kqb-single-head) .kqb-hero-card { position: relative; isolation: isolate; overflow: hidden; border-radius: 18px; border: 1px solid var(--night-line); padding: 26px 28px 24px; min-height: 260px; background: #04070D; }
+body.mbx .kqb > .kqb-hero:not(.kqb-single-head) .kqb-hero-card > .mbx-bgv { border-radius: inherit; }
+body.mbx .kqb > .kqb-hero:not(.kqb-single-head) .kqb-hero-title { display: none !important; }
+body.mbx .kqb > .kqb-hero:not(.kqb-single-head) .kqb-crumb { color: #FFD43B !important; text-transform: none !important; letter-spacing: 0 !important; font-weight: 700 !important; font-size: 14px !important; }
+body.mbx .kqb > .kqb-hero:not(.kqb-single-head) .kqb-hero-desc { color: var(--on-night) !important; font-size: 1.12rem !important; max-width: 46ch; }
+body.mbx .kqb > .kqb-hero:not(.kqb-single-head) .kqb-hero-book { color: var(--link-night) !important; }
+body.mbx .kqb > .kqb-hero:not(.kqb-single-head) .kqb-hero-meta { color: var(--on-night-2) !important; }
+body.mbx .kqb > .kqb-hero:not(.kqb-single-head) .kqb-hero-meta strong { color: #fff !important; font-family: var(--display); }
+body.mbx .kqb > .kqb-hero:not(.kqb-single-head) .kqb-hero-meta .kqb-hy { color: #FFD43B !important; }
+body.mbx .kqb > .kqb-hero:not(.kqb-single-head) .kqb-switch { background: rgba(255,255,255,.07) !important; border: 1px solid var(--night-line) !important; }
+body.mbx .kqb > .kqb-hero:not(.kqb-single-head) .kqb-switch a { color: var(--on-night-2) !important; }
+body.mbx .kqb > .kqb-hero:not(.kqb-single-head) .kqb-switch a.is-on { background: #fff !important; color: var(--ink) !important; box-shadow: none !important; }
+body.mbx .kqb > .kqb-hero:not(.kqb-single-head) .mbx-atlas-cta { background: rgba(255,255,255,.06) !important; border: 1px solid var(--night-line) !important; box-shadow: none !important; max-width: 520px; }
+body.mbx .kqb > .kqb-hero:not(.kqb-single-head) .mbx-atlas-cta b { color: #FFD43B !important; }
+body.mbx .kqb > .kqb-hero:not(.kqb-single-head) .mbx-atlas-cta :is(span, small) { color: var(--on-night-2) !important; }
 @media (max-width: 720px) {
-	body.mbx .kqb > .kqb-hero .kqb-hero-card { padding: 20px 18px; min-height: 0; }
+	body.mbx .kqb > .kqb-hero:not(.kqb-single-head) .kqb-hero-card { padding: 20px 18px; min-height: 0; }
 }
 
 /* =====================================================================
@@ -555,3 +555,7 @@ body.mbx .kqb-hero-card .mbx-bgv::after { background: linear-gradient(90deg, rgb
 	body.mbx .kqb-hero-card .mbx-bgv video, body.mbx .kqb-hero-card .mbx-bgv .mbx-bgv-poster { object-fit: cover; object-position: 80% 40%; opacity: .55; }
 	body.mbx .kqb-hero-card .mbx-bgv::after { background: rgba(4,7,13,.55); }
 }
+body.mbx .kqb-single > .kqb-single-head { clip-path: inset(-3px -100vmax) !important; }
+body.mbx .kqb-single > .kqb-single-tools { clip-path: inset(-3px -100vmax -2px) !important; }
+body.mbx .kqb-single > :is(.kqb-bc, .kqb-single-head, .kqb-single-tools)::after { border: 0 !important; background: none !important; }
+body.mbx .kqb-single > .kqb-single-head .kqb-qnum, body.mbx .kqb-single > .kqb-single-head .kqb-qnum * { background: rgba(157,185,247,.2) !important; color: #C7D7FB !important; }

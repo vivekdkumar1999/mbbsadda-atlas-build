@@ -1,0 +1,283 @@
+/* MBBS Adda — v3 look: "the exam answer booklet".
+   Blue ink (the logo), a red margin and red-pen marks, a yellow highlighter.
+   Loaded last on every page; everything is scoped under body.mbx. */
+
+/* ------------------------------------------------------------ tokens */
+body.mbx {
+	--ink: #131A2A;
+	--ink-2: #3D475C;
+	--ink-3: #687389;
+	--page: #F4F5F7;
+	--surface: #FFFFFF;
+	--line: #E2E5EB;
+	--line-2: #CBD1DB;
+	--blue: #1B57C9;
+	--blue-2: #133F95;
+	--blue-soft: #EAF0FB;
+	--saffron: #FFD43B;      /* highlighter */
+	--saffron-2: #F5C211;
+	--saffron-soft: #FFF6CC;
+	--pen: #C8322A;          /* examiner's red pen */
+	--pen-soft: #FCEBEA;
+	--green: #137A4F;
+	--r-ctl: 10px;
+	--r-panel: 14px;
+	--shadow-pop: 0 14px 40px -14px rgba(19, 26, 42, .25), 0 1px 3px rgba(19, 26, 42, .06);
+	--font: "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+	--display: "Bricolage Grotesque", "Atkinson Hyperlegible", system-ui, sans-serif;
+	background: var(--page);
+	color: var(--ink);
+	font-family: var(--font);
+}
+body.mbx :where(h1, h2, h3) { font-family: var(--display); letter-spacing: -0.02em; }
+body.mbx :focus-visible { outline: 3px solid rgba(27, 87, 201, .45); outline-offset: 2px; }
+body.mbx ::selection { background: #FFE98A; color: var(--ink); }
+
+/* ------------------------------------------------------------ buttons, chips */
+body.mbx .mbx-btn { font-family: var(--font); font-weight: 700; border-radius: 10px; }
+body.mbx .mbx-btn-primary { background: var(--blue); }
+body.mbx .mbx-btn-primary:hover { background: var(--blue-2); }
+body.mbx .mbx-btn-buy { background: var(--ink); color: #fff !important; }
+body.mbx .mbx-btn-buy:hover { background: #000; }
+body.mbx .mbx-chip { font-family: var(--font); font-weight: 400; }
+
+/* ------------------------------------------------------------ header */
+body.mbx .mbx-hdr { background: #fff; backdrop-filter: none; border-bottom: 1px solid var(--line); }
+body.mbx .mbx-logo-t { font-family: var(--display); font-weight: 800; font-size: 20px; letter-spacing: -0.03em; }
+body.mbx .mbx-navlink { font-family: var(--font); font-weight: 400; font-size: 15.5px; color: var(--ink-2) !important; }
+body.mbx .mbx-navlink:hover { color: var(--ink) !important; background: var(--page); }
+
+/* ------------------------------------------------------------ footer */
+body.mbx .mbx-ftr { background: #0F1522; }
+body.mbx .mbx-ftr h2 { font-family: var(--display); }
+body.mbx .mbx-ftr-more { color: #FFD43B !important; }
+
+/* ================================================================ HOME */
+body.mbx .mh3 {
+	--ink: #131A2A; --ink2: #3D475C; --mut: #5E6880; --line: #E2E5EB; --paper: #F4F5F7;
+	--acc: #C8322A; --acc2: #1B57C9; --blue: #1B57C9;
+	font-family: var(--font);
+}
+body.mbx .mh3 h1, body.mbx .mh3 h2, body.mbx .mh3 h3 { font-family: var(--display); }
+/* small section labels: sentence case, no tracking */
+body.mbx .mh3-eyebrow, body.mbx .mh3-kicker {
+	text-transform: none; letter-spacing: 0; font-size: .95rem; font-weight: 700; color: var(--pen);
+}
+body.mbx .mh3-kicker span { display: none; }
+body.mbx .mh3-tag { text-transform: none; letter-spacing: 0; font-size: .78rem; }
+
+/* hero: a sheet of ruled paper, not a night sky */
+body.mbx .mh3-hero {
+	background:
+		linear-gradient(90deg, transparent 0 calc(50% - 600px + 6px), rgba(200, 50, 42, .35) calc(50% - 600px + 6px) calc(50% - 600px + 7px), transparent calc(50% - 600px + 7px)),
+		repeating-linear-gradient(180deg, #fff 0 39px, #E7ECF5 39px 40px);
+	color: var(--ink); padding: 64px 0 72px; border-bottom: 1px solid var(--line);
+}
+body.mbx .mh3-glow, body.mbx .mh3-grid, body.mbx .mh3-scroll { display: none !important; }
+body.mbx .mh3-hero h1 { color: var(--ink); font-weight: 800; font-size: clamp(2.3rem, 5.2vw, 4.1rem); line-height: 1.02; letter-spacing: -0.035em; }
+body.mbx .mh3-hero h1 em { background: none; -webkit-background-clip: initial; background-clip: initial; color: var(--ink); }
+body.mbx .mh3-hl {
+	background: linear-gradient(180deg, transparent 58%, #FFE066 58%, #FFE066 92%, transparent 92%);
+	padding: 0 .06em; -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
+body.mbx .mh3-lede { color: var(--ink-2); font-size: 1.15rem; }
+body.mbx .mh3-lede b { color: var(--ink); }
+body.mbx .mh3 .mh3-search { box-shadow: 0 1px 0 rgba(19,26,42,.04); border: 2px solid var(--ink); border-radius: 14px; }
+body.mbx .mh3 .mh3-search .mbx-btn-buy { background: var(--blue); }
+body.mbx .mh3 .mh3-search .mbx-btn-buy:hover { background: var(--blue-2); }
+body.mbx .mh3 .mh3-popular { color: var(--ink-3); }
+body.mbx .mh3 .mh3-popular .mbx-chip { background: #fff; color: var(--ink); border: 1px solid var(--line-2); }
+body.mbx .mh3 .mh3-popular .mbx-chip:hover { border-color: var(--ink); background: #fff; }
+body.mbx .mh3-btn-glass { background: #fff !important; color: var(--ink) !important; border: 1px solid var(--line-2) !important; }
+body.mbx .mh3-stats { gap: 0; border-top: 1px solid var(--line-2); padding-top: 18px; }
+body.mbx .mh3-stats div { padding-right: 28px; margin-right: 28px; border-right: 1px solid var(--line); }
+body.mbx .mh3-stats div:last-child { border-right: 0; }
+body.mbx .mh3-stats dt { color: var(--ink); font-family: var(--display); }
+body.mbx .mh3-stats dd { color: var(--ink-3); font-size: .9rem; }
+
+/* the sample answer: the real answer sheet, flat on the desk */
+body.mbx .mh3-tilt { transform: none !important; }
+body.mbx .mh3-stab { background: #fff !important; color: var(--ink-2) !important; border: 1px solid var(--line-2) !important; font-family: var(--font) !important; font-weight: 700 !important; }
+body.mbx .mh3-stab.is-on { background: var(--ink) !important; color: #fff !important; border-color: var(--ink) !important; }
+body.mbx .mh3-paper {
+	transform: none !important; border-radius: 6px; background: #fff;
+	box-shadow: 0 24px 50px -24px rgba(19, 26, 42, .35), 0 0 0 1px var(--line);
+	background-image: linear-gradient(90deg, transparent 38px, rgba(200, 50, 42, .45) 38px, rgba(200, 50, 42, .45) 39px, transparent 39px);
+	padding-left: 56px !important;
+}
+body.mbx .mh3-paper, body.mbx .mh3-paper * { font-family: var(--font) !important; }
+body.mbx .mh3-q { font-family: var(--display) !important; font-weight: 700; color: var(--ink); }
+body.mbx .mh3-marks { border: 2px solid var(--pen) !important; color: var(--pen) !important; font-family: var(--display) !important; font-weight: 800; background: #fff !important; transform: rotate(-6deg); }
+body.mbx .mh3-ink { color: var(--ink-2); }
+body.mbx .mh3-ink :is(b, strong, h4, .h) { color: var(--blue) !important; }
+body.mbx .mh3-qr-switch { color: var(--ink-2) !important; }
+
+/* sections */
+body.mbx .mh3-sec { padding: 80px 0; }
+body.mbx .mh3-sec h2 { color: var(--ink); font-weight: 800; letter-spacing: -0.03em; }
+body.mbx .mh3-sub, body.mbx .mh3-sec p { color: var(--ink-2); }
+body.mbx .mh3-sec:nth-of-type(even) { background: #fff; }
+body.mbx .mh3-link { color: var(--blue); }
+body.mbx .mh3 :is(.mh3-arch, .mh3-vision, .mh3-final, .mh3-app) { background-image: none; }
+
+/* ================================================================ ANSWER PAGE */
+body.mbx .kqb { font-family: var(--font); color: var(--ink); }
+body.mbx .kqb-bc { font-size: 14px; color: var(--ink-3); }
+body.mbx .kqb-bc a { color: var(--ink-2); }
+
+/* question card */
+body.mbx .kqb-single-head {
+	background: #fff; border: 1px solid var(--line); box-shadow: none; border-radius: var(--r-panel);
+	position: relative;
+}
+body.mbx .kqb-hero-title {
+	font-family: var(--display) !important; font-weight: 700 !important; color: var(--ink) !important;
+	font-size: clamp(1.35rem, 2.6vw, 1.9rem) !important; line-height: 1.22 !important; letter-spacing: -0.02em;
+}
+body.mbx .kqb-hero-meta { color: var(--ink-3); }
+body.mbx .kqb-q-row > span {
+	text-transform: none !important; letter-spacing: 0 !important; font-family: var(--font) !important;
+	font-weight: 700; font-size: 13px; border-radius: 6px; box-shadow: none;
+}
+body.mbx .kqb-qnum { background: var(--ink) !important; color: #fff !important; border: 0 !important; }
+body.mbx .kqb-type { background: var(--page) !important; color: var(--ink-2) !important; border: 1px solid var(--line) !important; }
+/* marks: the examiner's red circle */
+body.mbx .kqb-marks {
+	background: #fff !important; color: var(--pen) !important; border: 2px solid var(--pen) !important;
+	border-radius: 999px !important; padding: 2px 9px !important; font-family: var(--display) !important; font-weight: 800 !important;
+}
+body.mbx .kqb-star { background: var(--saffron-soft) !important; color: #7A5A00 !important; border: 1px solid #F3DC7A !important; }
+
+/* full / quick switch */
+body.mbx .mbx-rsw { font-family: var(--font) !important; }
+
+/* the answer sheet */
+body.mbx .kqb-single-body {
+	background: #fff; border: 1px solid var(--line); border-radius: var(--r-panel); box-shadow: none;
+	position: relative;
+}
+@media (min-width: 721px) {
+	body.mbx .kqb-single-body { padding-left: 64px !important; background-image: linear-gradient(90deg, transparent 40px, rgba(200, 50, 42, .4) 40px, rgba(200, 50, 42, .4) 41px, transparent 41px); }
+}
+body.mbx .kqb-answer { font-family: var(--font) !important; font-size: 17px; line-height: 1.7; color: #232B3D; max-width: 74ch; }
+body.mbx .kqb-answer p, body.mbx .kqb-answer li { font-family: var(--font) !important; }
+body.mbx .kqb-answer strong, body.mbx .kqb-answer b { color: var(--ink) !important; font-weight: 700; }
+
+/* section headings: written and underlined, not boxed */
+body.mbx .kqb-answer .mqb-sec {
+	background: none !important; border: 0 !important; box-shadow: none !important; border-radius: 0 !important;
+	padding: 0 0 6px !important; margin: 34px 0 14px !important;
+	font-family: var(--display) !important; font-weight: 700 !important; font-size: 1.3rem !important;
+	color: var(--blue) !important; letter-spacing: -0.01em; line-height: 1.25 !important;
+	border-bottom: 2px solid var(--blue-soft) !important;
+}
+body.mbx .kqb-answer .mqb-sec:first-child { margin-top: 0 !important; }
+body.mbx .kqb-answer .mqb-sec-bar { display: none !important; }
+
+/* definition: the first line an examiner looks for */
+body.mbx .kqb-answer .mqb-def {
+	background: var(--blue-soft) !important; border: 0 !important; border-left: 4px solid var(--blue) !important;
+	border-radius: 0 10px 10px 0 !important; box-shadow: none !important; padding: 14px 18px !important; color: var(--ink) !important;
+}
+body.mbx .kqb-answer .mqb-def strong {
+	background: linear-gradient(180deg, transparent 60%, #FFE47A 60%, #FFE47A 94%, transparent 94%);
+}
+
+/* clinical pearl / note */
+body.mbx .kqb-answer .mqb-callout {
+	background: #FFFBEA !important; border: 1px solid #F3E3A0 !important; border-left: 4px solid var(--saffron-2) !important;
+	border-radius: 0 10px 10px 0 !important; box-shadow: none !important; padding: 12px 16px !important;
+}
+body.mbx .kqb-answer .mqb-callout-label {
+	background: none !important; color: #8A6500 !important; text-transform: none !important; letter-spacing: 0 !important;
+	font-family: var(--display) !important; font-weight: 700 !important; font-size: .95rem !important; padding: 0 !important; display: block; margin-bottom: 2px;
+}
+
+/* bullets and numbered steps */
+body.mbx .kqb-answer .mqb-pts { padding-left: 0 !important; }
+body.mbx .kqb-answer .mqb-pts > li { padding-left: 22px !important; position: relative; margin: 6px 0 !important; }
+body.mbx .kqb-answer .mqb-pts > li::before {
+	content: "" !important; position: absolute; left: 4px; top: .72em; width: 7px; height: 7px; border-radius: 50%;
+	background: var(--blue) !important; box-shadow: none !important; border: 0 !important; transform: none !important;
+}
+body.mbx .kqb-answer .mqb-steps > li::before { background: var(--ink) !important; color: #fff !important; font-family: var(--display) !important; }
+
+/* flowchart: arrows between boxes */
+body.mbx .kqb-answer .mqb-flow > span {
+	background: #fff !important; border: 1.5px solid var(--line-2) !important; border-radius: 8px !important; color: var(--ink) !important; box-shadow: none !important;
+}
+
+/* figures */
+body.mbx .kqb-answer .mqb-fig { border: 1px solid var(--line) !important; border-radius: 12px !important; background: #fff !important; box-shadow: none !important; padding: 10px !important; }
+body.mbx .kqb-answer .mqb-figcap { color: var(--ink-3) !important; font-size: 14px !important; text-align: center; }
+
+/* abbreviations */
+body.mbx .kqb-answer abbr.mbx-ab { text-decoration: underline dotted var(--line-2); text-underline-offset: 3px; }
+
+/* ================================================================ TABLES */
+body.mbx .kqb-answer .mqb-tablewrap {
+	border: 1px solid var(--line-2) !important; border-radius: 12px !important; box-shadow: none !important;
+	background: #fff !important; overflow: hidden; margin: 16px 0 22px !important;
+}
+body.mbx .kqb-answer .mqb-table { width: 100% !important; border-collapse: collapse !important; font-size: 15.5px !important; line-height: 1.5 !important; table-layout: auto; }
+body.mbx .kqb-answer .mqb-table thead th {
+	background: #EEF2F8 !important; color: var(--ink) !important; font-family: var(--display) !important; font-weight: 700 !important;
+	font-size: 14.5px !important; text-transform: none !important; letter-spacing: 0 !important;
+	border: 0 !important; border-bottom: 2px solid var(--line-2) !important; padding: 11px 14px !important; text-align: left; vertical-align: bottom;
+}
+body.mbx .kqb-answer .mqb-table td {
+	background: #fff !important; color: #232B3D !important; border: 0 !important; border-top: 1px solid var(--line) !important;
+	padding: 11px 14px !important; vertical-align: top; overflow-wrap: anywhere; hyphens: auto;
+}
+body.mbx .kqb-answer .mqb-table tbody tr:first-child td { border-top: 0 !important; }
+body.mbx .kqb-answer .mqb-table td:first-child { font-weight: 700; color: var(--ink) !important; }
+body.mbx .kqb-answer .mqb-table td + td { border-left: 1px solid var(--line) !important; }
+body.mbx .kqb-answer .mqb-table th + th { border-left: 1px solid var(--line) !important; }
+body.mbx .kqb-answer .mqb-lbl { display: none !important; }
+/* the old "scroll sideways" hint is gone: tables fit or they stack */
+body.mbx .kqb-answer .mqb-tablewrap.is-wide::after, body.mbx .kqb-answer .mqb-tablewrap .mba-hint { display: none !important; }
+
+/* phones: every table of 3+ columns becomes one card per row — no sideways scrolling */
+@media (max-width: 720px) {
+	body.mbx .kqb-answer .mqb-tablewrap { overflow: visible !important; border: 0 !important; background: none !important; }
+	body.mbx .kqb-answer .mqb-table.mbx-cards,
+	body.mbx .kqb-answer .mqb-table.mbx-cards tbody,
+	body.mbx .kqb-answer .mqb-table.mbx-cards tr,
+	body.mbx .kqb-answer .mqb-table.mbx-cards td { display: block !important; width: auto !important; }
+	body.mbx .kqb-answer .mqb-table.mbx-cards { min-width: 0 !important; }
+	body.mbx .kqb-answer .mqb-table.mbx-cards thead { display: none !important; }
+	body.mbx .kqb-answer .mqb-table.mbx-cards tr {
+		background: #fff; border: 1px solid var(--line-2); border-radius: 12px; margin: 0 0 10px; overflow: hidden;
+	}
+	body.mbx .kqb-answer .mqb-table.mbx-cards td { border: 0 !important; border-top: 1px solid var(--line) !important; padding: 9px 14px !important; }
+	body.mbx .kqb-answer .mqb-table.mbx-cards td:first-child {
+		border-top: 0 !important; background: #EEF2F8 !important; font-family: var(--display); font-size: 16px; padding: 10px 14px !important;
+	}
+	body.mbx .kqb-answer .mqb-table.mbx-cards td[data-l]:not(:first-child)::before {
+		content: attr(data-l); display: block; font-size: 12.5px; font-weight: 700; color: var(--ink-3); margin-bottom: 1px; letter-spacing: 0;
+	}
+	body.mbx .kqb-answer .mqb-table.mbx-cards td + td { border-left: 0 !important; }
+	body.mbx .kqb-answer .mqb-table.mbx-cards td:empty { display: none !important; }
+	/* two-column tables stay tables, just tighter */
+	body.mbx .kqb-answer .mqb-table:not(.mbx-cards) { font-size: 15px !important; }
+	body.mbx .kqb-answer .mqb-table:not(.mbx-cards) :is(td, th) { padding: 9px 10px !important; }
+	body.mbx .kqb-answer .mqb-tablewrap:has(.mqb-table:not(.mbx-cards)) { border: 1px solid var(--line-2) !important; background: #fff !important; overflow: hidden !important; }
+
+	body.mbx .kqb-answer { font-size: 16.5px; }
+	body.mbx .kqb-single-body { border-radius: 12px; }
+}
+
+/* ================================================================ LISTS, SUBJECT PAGES */
+body.mbx .kqb :is(.kqb-unit, .kqb-chapter, .kqb-card) { box-shadow: none !important; }
+body.mbx .kqb-more-title { font-family: var(--display) !important; }
+
+/* indigo/violet accents left over from older layers → brand blue */
+body.mbx :is(.is-on, .kqb-chip.is-on, .kqb-tab.is-on)[class] { --mba-acc: var(--blue); }
+body.mbx .mba-rm-btn, body.mbx .mbx-readmode, body.mbx [class*="reading-mode"] {
+	background: var(--ink) !important; box-shadow: 0 8px 20px -8px rgba(19, 26, 42, .5) !important;
+}
+
+/* reduced motion */
+@media (prefers-reduced-motion: reduce) {
+	body.mbx .mh3-card, body.mbx .mh3-glow { animation: none !important; }
+}

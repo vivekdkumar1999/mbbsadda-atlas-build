@@ -545,3 +545,13 @@ body.mbx .mbx-toc { display: none; }
 	body.mbx .mbx-toc a.is-on { color: var(--blue) !important; border-left-color: var(--blue); font-weight: 700; }
 }
 body.mbx.kqb-single-page .kqb-answer .mqb-sec { scroll-margin-top: 90px; }
+body.mbx:has(.kqb-rail) .entry-header { border: 0 !important; }
+body.mbx:has(.kqb-rail) .entry-header::after, body.mbx:has(.kqb-rail) .entry-header::before { display: none !important; }
+body.mbx:has(.kqb-rail) .kqb-rail, body.mbx:has(.kqb-rail) .kqb-rail-in { border: 0 !important; }
+body.mbx:has(.kqb-rail) .kqb-rail .kqb-chip.is-on, body.mbx:has(.kqb-rail) .kqb-rail .kqb-chip.is-on * { color: var(--ink) !important; }
+body.mbx .kqb-hero-card .mbx-bgv video, body.mbx .kqb-hero-card .mbx-bgv .mbx-bgv-poster { object-fit: contain; object-position: 100% 50%; }
+body.mbx .kqb-hero-card .mbx-bgv::after { background: linear-gradient(90deg, rgba(4,7,13,.92) 0%, rgba(4,7,13,.6) 45%, rgba(4,7,13,0) 75%); }
+@media (max-width: 720px) {
+	body.mbx .kqb-hero-card .mbx-bgv video, body.mbx .kqb-hero-card .mbx-bgv .mbx-bgv-poster { object-fit: cover; object-position: 80% 40%; opacity: .55; }
+	body.mbx .kqb-hero-card .mbx-bgv::after { background: rgba(4,7,13,.55); }
+}

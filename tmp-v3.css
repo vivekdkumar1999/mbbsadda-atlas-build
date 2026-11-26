@@ -170,6 +170,10 @@ body.mbx .mh3-final p { color: #3B3417 !important; }
 body.mbx .mh3-final .mbx-btn-buy { background: var(--ink) !important; color: #fff !important; }
 body.mbx .mh3-final .mh3-btn-glass { background: transparent !important; border-color: var(--ink) !important; }
 
+/* sections are simply there: no fade-and-slide on scroll */
+body.mbx .mh3 [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
+body.mbx .mh3-pitem b { color: var(--ink) !important; }
+
 /* pricing builder: no orange */
 body.mbx .mh3-pricing { background: #fff; }
 body.mbx .mh3-cmp :is(th, td):last-child { background: #FFF8D6 !important; }

@@ -120,6 +120,62 @@ body.mbx .mh3-sec:nth-of-type(even) { background: #fff; }
 body.mbx .mh3-link { color: var(--blue); }
 body.mbx .mh3 :is(.mh3-arch, .mh3-vision, .mh3-final, .mh3-app) { background-image: none; }
 
+
+/* one platform, five layers: the list, without the floating slabs */
+body.mbx .mh3-arch { background: var(--page); }
+body.mbx .mh3-iso-wrap { display: none !important; }
+body.mbx .mh3-arch-in { grid-template-columns: 1fr !important; }
+body.mbx .mh3-arch-copy > p:not(.mh3-eyebrow) { max-width: 62ch; }
+body.mbx .mh3-layers-key { grid-template-columns: repeat(5, 1fr); gap: 0; border: 1px solid var(--line-2); border-radius: 14px; overflow: hidden; background: #fff; }
+body.mbx .mh3-layers-key li { border: 0; border-radius: 0; border-left: 1px solid var(--line); padding: 18px; flex-direction: column; align-items: flex-start; gap: 6px; transform: none !important; box-shadow: none !important; }
+body.mbx .mh3-layers-key li:first-child { border-left: 0; }
+body.mbx .mh3-layers-key li span { color: var(--pen); font-family: var(--display); }
+@media (max-width: 900px) { body.mbx .mh3-layers-key { grid-template-columns: 1fr; } body.mbx .mh3-layers-key li { border-left: 0; border-top: 1px solid var(--line); } body.mbx .mh3-layers-key li:first-child { border-top: 0; } }
+
+/* subjects: the periodic-table tiles, quieter */
+body.mbx .mh3-theory { background: #fff; }
+
+/* practicals: light, like the rest */
+body.mbx .mh3-prac { background: var(--page) !important; color: var(--ink) !important; }
+body.mbx .mh3-prac h2 { color: var(--ink) !important; }
+body.mbx .mh3-prac .mh3-sub { color: var(--ink-2) !important; }
+body.mbx .mh3 .mh3-prac .mh3-eyebrow { color: var(--pen) !important; }
+body.mbx .mh3-face { box-shadow: 0 20px 40px -20px rgba(19, 26, 42, .35), 0 0 0 1px var(--line) !important; border-radius: 14px !important; }
+body.mbx .mh3-back { background: #fff !important; }
+body.mbx .mh3-back .mh3-tag { background: var(--pen-soft) !important; color: var(--pen) !important; }
+body.mbx .mh3-pitem { background: #fff !important; border: 1px solid var(--line) !important; color: var(--ink) !important; transform: none !important; border-radius: 12px !important; }
+body.mbx .mh3-pitem:hover { border-color: var(--ink) !important; }
+body.mbx .mh3-pitem small { color: var(--ink-3) !important; }
+body.mbx .mh3-pdot { box-shadow: none !important; width: 10px !important; height: 10px !important; }
+
+/* quick revise demo */
+body.mbx .mh3-switch { background: var(--blue) !important; box-shadow: none !important; }
+body.mbx .mh3-sheet.is-short { border-color: var(--blue) !important; }
+body.mbx .mh3-sheet.is-short i { background: var(--blue-soft) !important; }
+body.mbx .mh3-sheet.is-short i:first-child { background: var(--blue) !important; }
+
+/* atlas and app: one solid ink band, no gradients */
+body.mbx .mh3-atlas { background: #fff !important; color: var(--ink) !important; }
+body.mbx .mh3-atlas h2 { color: var(--ink) !important; }
+body.mbx .mh3-atlas p { color: var(--ink-2) !important; }
+body.mbx .mh3 .mh3-atlas .mh3-eyebrow { color: var(--pen) !important; }
+body.mbx .mh3-atlas .mbx-btn-ghost-light { color: var(--ink) !important; box-shadow: inset 0 0 0 1.5px var(--line-2) !important; }
+body.mbx .mh3-app:not(.mh3-atlas) { background: var(--ink) !important; }
+body.mbx .mh3 .mh3-app:not(.mh3-atlas) .mh3-eyebrow { color: #FFD43B !important; }
+
+/* the last call: a highlighter-yellow band */
+body.mbx .mh3-final { background: #FFD43B !important; color: var(--ink) !important; }
+body.mbx .mh3-final h2 { color: var(--ink) !important; }
+body.mbx .mh3-final p { color: #3B3417 !important; }
+body.mbx .mh3-final .mbx-btn-buy { background: var(--ink) !important; color: #fff !important; }
+body.mbx .mh3-final .mh3-btn-glass { background: transparent !important; border-color: var(--ink) !important; }
+
+/* pricing builder: no orange */
+body.mbx .mh3-pricing { background: #fff; }
+body.mbx .mh3-cmp :is(th, td):last-child { background: #FFF8D6 !important; }
+body.mbx .mh3-cmp th:last-child { background: #FFD43B !important; color: var(--ink) !important; }
+body.mbx .mbx-sidebar-title, body.mbx .kqb-side-h, body.mbx .kqb-chapters-h { text-transform: none !important; letter-spacing: 0 !important; }
+
 /* ================================================================ ANSWER PAGE */
 body.mbx .kqb { font-family: var(--font); color: var(--ink); }
 body.mbx .kqb-bc { font-size: 14px; color: var(--ink-3); }

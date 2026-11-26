@@ -559,3 +559,6 @@ body.mbx .kqb-single > .kqb-single-head { clip-path: inset(-3px -100vmax) !impor
 body.mbx .kqb-single > .kqb-single-tools { clip-path: inset(-3px -100vmax -2px) !important; }
 body.mbx .kqb-single > :is(.kqb-bc, .kqb-single-head, .kqb-single-tools)::after { border: 0 !important; background: none !important; }
 body.mbx .kqb-single > .kqb-single-head .kqb-qnum, body.mbx .kqb-single > .kqb-single-head .kqb-qnum * { background: rgba(157,185,247,.2) !important; color: #C7D7FB !important; }
+html body.mbx .kqb-single .kqb-single-head .kqb-q-row > .kqb-qnum { background: rgba(157,185,247,.2) !important; color: #C7D7FB !important; }
+body.mbx .kqb-single > .kqb-single-tools { margin: 0 !important; padding: 6px 0 52px !important; }
+body.mbx .kqb-single > .kqb-single-body { margin-top: -26px !important; box-shadow: 0 30px 60px -40px rgba(19,26,42,.35) !important; }
